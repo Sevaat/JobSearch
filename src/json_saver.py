@@ -6,7 +6,7 @@ from src.file_saver import Saver
 from src.vacancy import Vacancy
 
 class JSONSaver(Saver):
-    FILEPATH = Path(__file__).resolve().parent.parent / "Data"
+    FILEPATH = Path(__file__).resolve().parent.parent / "data"
     os.makedirs(FILEPATH, exist_ok=True)
     FILEPATH = f"{FILEPATH}/vacancies.json"
 
