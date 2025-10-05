@@ -61,7 +61,9 @@ class JSONSaver(Saver):
         """
         try:
             with open(self.FILEPATH, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                result = json.load(f)
+            if isinstance(result, dict): result = [result]
+            return result
         except Exception as e:
             print(f'Ошибка: {e}')
             return []
