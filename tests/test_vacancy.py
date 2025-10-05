@@ -30,6 +30,10 @@ def test_vacancy_comparison_lt_eq():
     assert not v2 < v1
     assert v1 == v3
     assert not v1 == v2
+    with pytest.raises(TypeError):
+        v1 < 20
+    with pytest.raises(TypeError):
+        v1 == 20
 
 def test_vacancy_to_dict():
     v = Vacancy("vac", "url", 1, "description")

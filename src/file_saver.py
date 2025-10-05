@@ -1,10 +1,12 @@
 from abc import ABC, abstractmethod
-from typing import List
+from typing import Any, Dict, List
+
 from src.vacancy import Vacancy
+
 
 class Saver(ABC):
     @abstractmethod
-    def get_vacancies(self, **criteria) -> List[Vacancy]:
+    def get_vacancies(self, **criteria: Dict[str, Any]) -> List[Vacancy]:
         """
         Получить отфильтрованные данные вакансий
         :param criteria: критерии фильтрации вакансий

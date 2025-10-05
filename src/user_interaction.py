@@ -1,8 +1,9 @@
 from typing import List
 
 from src.hh_parser import HeadHunterParser
-from src.vacancy import Vacancy
 from src.json_saver import JSONSaver
+from src.vacancy import Vacancy
+
 
 def filter_vacancies(vacancies: List[Vacancy], keywords: List[str]) -> List[Vacancy]:
     """
@@ -13,6 +14,7 @@ def filter_vacancies(vacancies: List[Vacancy], keywords: List[str]) -> List[Vaca
     """
     return [v for v in vacancies if any(word.lower() in v.description.lower() for word in keywords)]
 
+
 def get_vacancies_by_salary(vacancies: List[Vacancy], salary_range: str) -> List[Vacancy]:
     """
     Отфильтровать вакансии по величине зарплаты
@@ -21,11 +23,12 @@ def get_vacancies_by_salary(vacancies: List[Vacancy], salary_range: str) -> List
     :return: список отфильтрованных вакансий
     """
     try:
-        min_salary, max_salary = map(int, salary_range.replace(' ', '').split('-'))
+        min_salary, max_salary = map(int, salary_range.replace(" ", "").split("-"))
     except Exception as e:
-        print(f'Ошибка: {e}')
-        min_salary, max_salary = 0, float('inf')
+        print(f"Ошибка: {e}")
+        min_salary, max_salary = 0, float("inf")
     return [v for v in vacancies if min_salary <= v.salary <= max_salary]
+
 
 def sort_vacancies(vacancies: List[Vacancy]) -> List[Vacancy]:
     """
@@ -34,6 +37,7 @@ def sort_vacancies(vacancies: List[Vacancy]) -> List[Vacancy]:
     :return: отсортированный по убыванию список вакансий
     """
     return sorted(vacancies, reverse=True)
+
 
 def get_top_vacancies(vacancies: List[Vacancy], n: int) -> List[Vacancy]:
     """
@@ -44,6 +48,7 @@ def get_top_vacancies(vacancies: List[Vacancy], n: int) -> List[Vacancy]:
     """
     return vacancies[:n]
 
+
 def print_vacancies(vacancies: List[Vacancy]) -> None:
     """
     Вывести на экран список вакансий
@@ -52,6 +57,7 @@ def print_vacancies(vacancies: List[Vacancy]) -> None:
     """
     for v in vacancies:
         print(v)
+
 
 def user_interaction() -> None:
     """
