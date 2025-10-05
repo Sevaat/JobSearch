@@ -43,7 +43,7 @@ class Vacancy:
         return self.salary == other.salary
 
     @classmethod
-    def cast_to_object_list(cls, vacancies_json) -> Self:
+    def cast_to_object_list(cls, vacancies_json) -> list:
         """
         Перевести описание вакансии из JSON в список
         :param vacancies_json: описание вакансии в JSON
